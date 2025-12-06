@@ -1,0 +1,48 @@
+# Dependencies
+node_modules
+server/node_modules
+npm-debug.log
+package-lock.json
+server/package-lock.json
+
+# Build outputs
+dist
+build
+*.log
+
+# Development files
+.git
+.gitignore
+.env
+server/.env
+*.md
+!README.md
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+.DS_Store
+
+# Test files
+coverage
+*.test.js
+*.test.jsx
+__tests__
+src/test
+
+# Documentation (except main README)
+docs
+API_REFERENCE.md
+openapi.yaml
+
+# CI/CD
+.github
+.gitlab-ci.yml
+.travis.yml
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose.yml

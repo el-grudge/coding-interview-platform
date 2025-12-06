@@ -1,0 +1,682 @@
+openapi: 3.0.3
+info:
+  title: Coding Interview Platform API
+  description: |
+    API for a collaborative online coding interview platform that supports real-time code editing,
+    execution, and session management.
+  version: 1.0.0
+  contact:
+    name: API Support
+    email: support@codinginterviewplatform.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://localhost:3000/api/v1
+    description: Development server
+  - url: https://api.codinginterviewplatform.com/v1
+    description: Production server
+
+tags:
+  - name: rooms
+    description: Interview room management
+  - name: code
+    description: Code execution and snippets
+  - name: sessions
+    description: Session and collaboration management
+  - name: health
+    description: Health check endpoints
+
+paths:
+  /health:
+    get:
+      summary: Health check
+      description: Check if the API is running and healthy
+      tags:
+        - health
+      operationId: healthCheck
+      responses:
+        '200':
+          description: API is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  timestamp:
+                    type: string
+                    format: date-time
+                  uptime:
+                    type: number
+                    description: Server uptime in seconds
+
+  /rooms:
+    post:
+      summary: Create a new interview room
+      description: Creates a new interview room with a unique ID
+      tags:
+        - rooms
+      operationId: createRoom
+      requestBody:
+        description: Optional room configuration
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                language:
+                  type: string
+                  enum: [javascript, python, java, cpp, go]
+                  default: javascript
+                  description: Default programming language for the room
+                initialCode:
+                  type: string
+                  description: Initial code snippet in the editor
+                  example: "// Start coding..."
+                expiresIn:
+                  type: integer
+                  description: Room expiration time in hours (default 24)
+                  minimum: 1
+                  maximum: 168
+                  default: 24
+      responses:
+        '201':
+          description: Room created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+        '400':
+          description: Invalid request body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    get:
+      summary: List all active rooms
+      description: Get a list of all active interview rooms
+      tags:
+        - rooms
+      operationId: listRooms
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of rooms to return
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 50
+        - name: offset
+          in: query
+          description: Number of rooms to skip
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+      responses:
+        '200':
+          description: List of rooms
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rooms:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Room'
+                  total:
+                    type: integer
+                    description: Total number of active rooms
+                  limit:
+                    type: integer
+                  offset:
+                    type: integer
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /rooms/{roomId}:
+    get:
+      summary: Get room details
+      description: Get details about a specific interview room
+      tags:
+        - rooms
+      operationId: getRoom
+      parameters:
+        - name: roomId
+          in: path
+          required: true
+          description: Unique identifier for the room
+          schema:
+            type: string
+            pattern: '^[a-zA-Z0-9_-]{10}$'
+      responses:
+        '200':
+          description: Room details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+        '404':
+          description: Room not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    delete:
+      summary: Delete a room
+      description: Delete an interview room and all associated data
+      tags:
+        - rooms
+      operationId: deleteRoom
+      parameters:
+        - name: roomId
+          in: path
+          required: true
+          description: Unique identifier for the room
+          schema:
+            type: string
+            pattern: '^[a-zA-Z0-9_-]{10}$'
+      responses:
+        '204':
+          description: Room deleted successfully
+        '404':
+          description: Room not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /rooms/{roomId}/code:
+    get:
+      summary: Get current code in room
+      description: Retrieve the current code content from a room
+      tags:
+        - code
+      operationId: getRoomCode
+      parameters:
+        - name: roomId
+          in: path
+          required: true
+          description: Unique identifier for the room
+          schema:
+            type: string
+            pattern: '^[a-zA-Z0-9_-]{10}$'
+      responses:
+        '200':
+          description: Current code content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CodeSnapshot'
+        '404':
+          description: Room not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    put:
+      summary: Update code in room
+      description: Update the code content in a room
+      tags:
+        - code
+      operationId: updateRoomCode
+      parameters:
+        - name: roomId
+          in: path
+          required: true
+          description: Unique identifier for the room
+          schema:
+            type: string
+            pattern: '^[a-zA-Z0-9_-]{10}$'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - code
+              properties:
+                code:
+                  type: string
+                  description: The code content
+                language:
+                  type: string
+                  enum: [javascript, python, java, cpp, go]
+                  description: Programming language
+      responses:
+        '200':
+          description: Code updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CodeSnapshot'
+        '400':
+          description: Invalid request body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Room not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /code/execute:
+    post:
+      summary: Execute code
+      description: Execute code in a sandboxed environment and return the output
+      tags:
+        - code
+      operationId: executeCode
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CodeExecutionRequest'
+      responses:
+        '200':
+          description: Code executed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CodeExecutionResult'
+        '400':
+          description: Invalid request body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '413':
+          description: Code too large
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Execution error or internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /sessions/{roomId}:
+    get:
+      summary: Get active session info
+      description: Get information about active users in a room
+      tags:
+        - sessions
+      operationId: getSession
+      parameters:
+        - name: roomId
+          in: path
+          required: true
+          description: Unique identifier for the room
+          schema:
+            type: string
+            pattern: '^[a-zA-Z0-9_-]{10}$'
+      responses:
+        '200':
+          description: Session information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+        '404':
+          description: Room not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /sessions/{roomId}/join:
+    post:
+      summary: Join a room session
+      description: Join an interview room session
+      tags:
+        - sessions
+      operationId: joinSession
+      parameters:
+        - name: roomId
+          in: path
+          required: true
+          description: Unique identifier for the room
+          schema:
+            type: string
+            pattern: '^[a-zA-Z0-9_-]{10}$'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userName:
+                  type: string
+                  description: Optional user name
+                  maxLength: 50
+      responses:
+        '200':
+          description: Successfully joined session
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sessionId:
+                    type: string
+                    description: Unique session identifier
+                  room:
+                    $ref: '#/components/schemas/Room'
+        '404':
+          description: Room not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /sessions/{roomId}/leave:
+    post:
+      summary: Leave a room session
+      description: Leave an interview room session
+      tags:
+        - sessions
+      operationId: leaveSession
+      parameters:
+        - name: roomId
+          in: path
+          required: true
+          description: Unique identifier for the room
+          schema:
+            type: string
+            pattern: '^[a-zA-Z0-9_-]{10}$'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - sessionId
+              properties:
+                sessionId:
+                  type: string
+                  description: Session identifier received when joining
+      responses:
+        '204':
+          description: Successfully left session
+        '404':
+          description: Room or session not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    Room:
+      type: object
+      required:
+        - id
+        - createdAt
+        - language
+      properties:
+        id:
+          type: string
+          description: Unique room identifier
+          pattern: '^[a-zA-Z0-9_-]{10}$'
+          example: "abc123XYZ_"
+        language:
+          type: string
+          enum: [javascript, python, java, cpp, go]
+          description: Current programming language
+          example: javascript
+        createdAt:
+          type: string
+          format: date-time
+          description: Room creation timestamp
+        expiresAt:
+          type: string
+          format: date-time
+          description: Room expiration timestamp
+        activeUsers:
+          type: integer
+          description: Number of currently active users
+          minimum: 0
+          example: 2
+        codeSnippet:
+          type: string
+          description: Current code in the room
+          example: "console.log('Hello, World!');"
+        shareUrl:
+          type: string
+          format: uri
+          description: Shareable URL for the room
+          example: "https://app.example.com/room/abc123XYZ_"
+
+    CodeSnapshot:
+      type: object
+      required:
+        - code
+        - language
+        - timestamp
+      properties:
+        code:
+          type: string
+          description: The code content
+        language:
+          type: string
+          enum: [javascript, python, java, cpp, go]
+          description: Programming language
+        timestamp:
+          type: string
+          format: date-time
+          description: When the code was last updated
+        version:
+          type: integer
+          description: Version number for conflict resolution
+          minimum: 0
+
+    CodeExecutionRequest:
+      type: object
+      required:
+        - code
+        - language
+      properties:
+        code:
+          type: string
+          description: Code to execute
+          maxLength: 50000
+          example: "console.log('Hello, World!');"
+        language:
+          type: string
+          enum: [javascript, python, java, cpp, go]
+          description: Programming language
+          example: javascript
+        timeout:
+          type: integer
+          description: Execution timeout in milliseconds
+          minimum: 100
+          maximum: 30000
+          default: 5000
+        stdin:
+          type: string
+          description: Standard input for the code
+          maxLength: 10000
+
+    CodeExecutionResult:
+      type: object
+      required:
+        - success
+        - output
+        - executionTime
+      properties:
+        success:
+          type: boolean
+          description: Whether execution was successful
+        output:
+          type: string
+          description: Standard output from execution
+          example: "Hello, World!"
+        error:
+          type: string
+          description: Error message if execution failed
+        executionTime:
+          type: integer
+          description: Execution time in milliseconds
+          example: 42
+        memoryUsed:
+          type: integer
+          description: Memory used in bytes
+          example: 1024000
+        exitCode:
+          type: integer
+          description: Process exit code
+          example: 0
+
+    Session:
+      type: object
+      required:
+        - roomId
+        - activeUsers
+        - createdAt
+      properties:
+        roomId:
+          type: string
+          description: Room identifier
+          pattern: '^[a-zA-Z0-9_-]{10}$'
+        activeUsers:
+          type: array
+          description: List of active users in the session
+          items:
+            $ref: '#/components/schemas/User'
+        createdAt:
+          type: string
+          format: date-time
+          description: Session creation timestamp
+        lastActivity:
+          type: string
+          format: date-time
+          description: Last activity timestamp
+
+    User:
+      type: object
+      required:
+        - id
+        - joinedAt
+      properties:
+        id:
+          type: string
+          description: Unique user identifier
+        userName:
+          type: string
+          description: User display name
+          maxLength: 50
+        joinedAt:
+          type: string
+          format: date-time
+          description: When the user joined
+        isActive:
+          type: boolean
+          description: Whether the user is currently active
+
+    Error:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          description: Error type/code
+          example: "ROOM_NOT_FOUND"
+        message:
+          type: string
+          description: Human-readable error message
+          example: "The requested room does not exist"
+        details:
+          type: object
+          description: Additional error details
+          additionalProperties: true
+        timestamp:
+          type: string
+          format: date-time
+          description: Error timestamp
+
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key for authentication
+
+security: []
