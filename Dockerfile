@@ -10,8 +10,8 @@ COPY vite.config.js ./
 COPY index.html ./
 COPY eslint.config.js ./
 
-# Install frontend dependencies
-RUN npm ci --omit=dev
+# Install frontend dependencies (including dev dependencies for build tools)
+RUN npm ci
 
 # Copy frontend source
 COPY src ./src
