@@ -1,0 +1,50 @@
+2025-12-06T22:32:46.147749697Z #16 0.757 npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+2025-12-06T22:32:46.147752517Z #16 0.757 npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+2025-12-06T22:32:46.147755757Z #16 0.757 npm error [--no-bin-links] [--no-fund] [--dry-run]
+2025-12-06T22:32:46.147761948Z #16 0.757 npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+2025-12-06T22:32:46.147764828Z #16 0.757 npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+2025-12-06T22:32:46.147767738Z #16 0.757 npm error
+2025-12-06T22:32:46.147770598Z #16 0.757 npm error aliases: clean-install, ic, install-clean, isntall-clean
+2025-12-06T22:32:46.147773418Z #16 0.757 npm error
+2025-12-06T22:32:46.147776228Z #16 0.757 npm error Run "npm help ci" for more info
+2025-12-06T22:32:46.147779928Z #16 0.759 npm error A complete log of this run can be found in: /root/.npm/_logs/2025-12-06T22_32_43_081Z-debug-0.log
+2025-12-06T22:32:46.147782828Z #16 ERROR: process "/bin/sh -c npm ci --omit=dev" did not complete successfully: exit code: 1
+2025-12-06T22:32:46.298044329Z 
+2025-12-06T22:32:46.298066239Z #15 [frontend-builder  7/10] RUN npm ci --omit=dev
+2025-12-06T22:32:47.719525546Z #15 ERROR: process "/bin/sh -c npm ci --omit=dev" did not complete successfully: exit code: 1
+2025-12-06T22:32:47.931915808Z ------
+2025-12-06T22:32:47.931937538Z  > [production 6/9] RUN npm ci --omit=dev:
+2025-12-06T22:32:47.931942838Z 0.757 npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+2025-12-06T22:32:47.931946988Z 0.757 npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+2025-12-06T22:32:47.931951449Z 0.757 npm error [--no-bin-links] [--no-fund] [--dry-run]
+2025-12-06T22:32:47.931955269Z 0.757 npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+2025-12-06T22:32:47.931971969Z 0.757 npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+2025-12-06T22:32:47.931974609Z 0.757 npm error
+2025-12-06T22:32:47.931977219Z 0.757 npm error aliases: clean-install, ic, install-clean, isntall-clean
+2025-12-06T22:32:47.931979489Z 0.757 npm error
+2025-12-06T22:32:47.931981779Z 0.757 npm error Run "npm help ci" for more info
+2025-12-06T22:32:47.931984619Z 0.759 npm error A complete log of this run can be found in: /root/.npm/_logs/2025-12-06T22_32_43_081Z-debug-0.log
+2025-12-06T22:32:47.931986819Z ------
+2025-12-06T22:32:47.931989029Z ------
+2025-12-06T22:32:47.931991459Z  > [frontend-builder  7/10] RUN npm ci --omit=dev:
+2025-12-06T22:32:47.931993619Z 0.810 npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+2025-12-06T22:32:47.93199585Z 0.810 npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+2025-12-06T22:32:47.931998059Z 0.810 npm error [--no-bin-links] [--no-fund] [--dry-run]
+2025-12-06T22:32:47.932000239Z 0.810 npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+2025-12-06T22:32:47.93200249Z 0.810 npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+2025-12-06T22:32:47.93200477Z 0.810 npm error
+2025-12-06T22:32:47.93200701Z 0.810 npm error aliases: clean-install, ic, install-clean, isntall-clean
+2025-12-06T22:32:47.9320093Z 0.810 npm error
+2025-12-06T22:32:47.93201164Z 0.810 npm error Run "npm help ci" for more info
+2025-12-06T22:32:47.932014Z 0.813 npm error A complete log of this run can be found in: /root/.npm/_logs/2025-12-06T22_32_43_104Z-debug-0.log
+2025-12-06T22:32:47.93201615Z ------
+2025-12-06T22:32:47.932745427Z Dockerfile:36
+2025-12-06T22:32:47.935538114Z --------------------
+2025-12-06T22:32:47.935547354Z   34 |     # Install backend dependencies
+2025-12-06T22:32:47.935550904Z   35 |     WORKDIR /app/server
+2025-12-06T22:32:47.935553574Z   36 | >>> RUN npm ci --omit=dev
+2025-12-06T22:32:47.935556035Z   37 |     
+2025-12-06T22:32:47.935558504Z   38 |     # Copy backend source
+2025-12-06T22:32:47.935560975Z --------------------
+2025-12-06T22:32:47.935563985Z error: failed to solve: process "/bin/sh -c npm ci --omit=dev" did not complete successfully: exit code: 1
+2025-12-06T22:32:47.947875708Z error: exit status 1
