@@ -1,0 +1,110 @@
+2025-12-06T22:24:18.723234963Z ==> Cloning from https://github.com/el-grudge/coding-interview-platform
+2025-12-06T22:24:19.180354979Z ==> Checking out commit f7161e81d8b4cec6dd365181442e531a2b5e2c11 in branch main
+2025-12-06T22:24:21.210642562Z #1 [internal] load build definition from Dockerfile
+2025-12-06T22:24:21.210693663Z #1 transferring dockerfile: 1.50kB done
+2025-12-06T22:24:21.210700603Z #1 DONE 0.0s
+2025-12-06T22:24:21.210704794Z 
+2025-12-06T22:24:21.210709223Z #2 [internal] load metadata for docker.io/library/node:20-alpine
+2025-12-06T22:24:21.380627292Z #2 ...
+2025-12-06T22:24:21.380646312Z 
+2025-12-06T22:24:21.380652472Z #3 [auth] library/node:pull render-prod/docker-mirror-repository/library/node:pull token for us-west1-docker.pkg.dev
+2025-12-06T22:24:21.380659523Z #3 DONE 0.0s
+2025-12-06T22:24:21.529846439Z 
+2025-12-06T22:24:21.529874679Z #2 [internal] load metadata for docker.io/library/node:20-alpine
+2025-12-06T22:24:21.627633891Z #2 DONE 0.6s
+2025-12-06T22:24:21.821356157Z 
+2025-12-06T22:24:21.821380467Z #4 [internal] load .dockerignore
+2025-12-06T22:24:21.821384737Z #4 transferring context: 528B done
+2025-12-06T22:24:21.821388597Z #4 DONE 0.0s
+2025-12-06T22:24:21.821392248Z 
+2025-12-06T22:24:21.821395898Z #5 [internal] load build context
+2025-12-06T22:24:21.821399538Z #5 transferring context: 60.24kB done
+2025-12-06T22:24:21.821402768Z #5 DONE 0.0s
+2025-12-06T22:24:21.821419068Z 
+2025-12-06T22:24:21.821423398Z #6 [frontend-builder  1/10] FROM docker.io/library/node:20-alpine@sha256:643e7036aa985317ebfee460005e322aa550c6b6883000d01daefb58689a58e2
+2025-12-06T22:24:21.821427658Z #6 resolve docker.io/library/node:20-alpine@sha256:643e7036aa985317ebfee460005e322aa550c6b6883000d01daefb58689a58e2 done
+2025-12-06T22:24:21.821430908Z #6 sha256:6ac8cc1f0b52065d2132d052abc59bf19e19ac0c65729d4300ab41db30fed855 446B / 446B 0.1s done
+2025-12-06T22:24:21.977011667Z #6 sha256:34226f5414967f183a8ba2d2a0bf2809b3864182e8f68c07c066fa83f025024a 1.26MB / 1.26MB 0.3s done
+2025-12-06T22:24:21.977026438Z #6 sha256:014e56e613968f73cce0858124ca5fbc601d7888099969a4eea69f31dcd71a53 0B / 3.86MB 0.2s
+2025-12-06T22:24:21.977029118Z #6 sha256:d28ab52fe4290429b930e8fa368da4da8a7e63cf143c38f9b869950a67c32645 0B / 42.78MB 0.2s
+2025-12-06T22:24:22.190717621Z #6 sha256:014e56e613968f73cce0858124ca5fbc601d7888099969a4eea69f31dcd71a53 3.86MB / 3.86MB 0.3s done
+2025-12-06T22:24:22.190736071Z #6 sha256:d28ab52fe4290429b930e8fa368da4da8a7e63cf143c38f9b869950a67c32645 42.00MB / 42.78MB 0.5s
+2025-12-06T22:24:22.190739611Z #6 extracting sha256:014e56e613968f73cce0858124ca5fbc601d7888099969a4eea69f31dcd71a53 0.1s done
+2025-12-06T22:24:22.395351935Z #6 sha256:d28ab52fe4290429b930e8fa368da4da8a7e63cf143c38f9b869950a67c32645 42.78MB / 42.78MB 0.5s done
+2025-12-06T22:24:22.395372295Z #6 extracting sha256:d28ab52fe4290429b930e8fa368da4da8a7e63cf143c38f9b869950a67c32645
+2025-12-06T22:24:23.412092689Z #6 extracting sha256:d28ab52fe4290429b930e8fa368da4da8a7e63cf143c38f9b869950a67c32645 1.2s done
+2025-12-06T22:24:23.412111759Z #6 DONE 1.8s
+2025-12-06T22:24:23.513115749Z 
+2025-12-06T22:24:23.5131392Z #6 [frontend-builder  1/10] FROM docker.io/library/node:20-alpine@sha256:643e7036aa985317ebfee460005e322aa550c6b6883000d01daefb58689a58e2
+2025-12-06T22:24:23.51314699Z #6 extracting sha256:34226f5414967f183a8ba2d2a0bf2809b3864182e8f68c07c066fa83f025024a 0.0s done
+2025-12-06T22:24:23.51315286Z #6 extracting sha256:6ac8cc1f0b52065d2132d052abc59bf19e19ac0c65729d4300ab41db30fed855 0.0s done
+2025-12-06T22:24:23.51315874Z #6 DONE 1.8s
+2025-12-06T22:24:23.51316424Z 
+2025-12-06T22:24:23.51317042Z #7 [frontend-builder  2/10] WORKDIR /app
+2025-12-06T22:24:23.51317515Z #7 DONE 0.0s
+2025-12-06T22:24:23.51317848Z 
+2025-12-06T22:24:23.51318253Z #8 [frontend-builder  3/10] COPY package*.json ./
+2025-12-06T22:24:23.513186101Z #8 DONE 0.0s
+2025-12-06T22:24:23.51318947Z 
+2025-12-06T22:24:23.513193031Z #9 [frontend-builder  4/10] COPY vite.config.js ./
+2025-12-06T22:24:23.736627527Z #9 DONE 0.0s
+2025-12-06T22:24:23.736649017Z 
+2025-12-06T22:24:23.736656548Z #10 [frontend-builder  5/10] COPY index.html ./
+2025-12-06T22:24:23.736662818Z #10 DONE 0.0s
+2025-12-06T22:24:23.736668508Z 
+2025-12-06T22:24:23.736675098Z #11 [frontend-builder  6/10] COPY eslint.config.js ./
+2025-12-06T22:24:23.736680548Z #11 DONE 0.0s
+2025-12-06T22:24:23.736686008Z 
+2025-12-06T22:24:23.736691918Z #12 [frontend-builder  7/10] RUN npm ci --only=production
+2025-12-06T22:24:23.74732081Z #12 0.161 npm warn config only Use `--omit=dev` to omit dev dependencies from the install.
+2025-12-06T22:24:24.059870018Z #12 0.474 npm error code EUSAGE
+2025-12-06T22:24:24.145765272Z #12 0.474 npm error
+2025-12-06T22:24:24.145783922Z #12 0.474 npm error The `npm ci` command can only install with an existing package-lock.json or
+2025-12-06T22:24:24.145788162Z #12 0.474 npm error npm-shrinkwrap.json with lockfileVersion >= 1. Run an install with npm@5 or
+2025-12-06T22:24:24.145793673Z #12 0.474 npm error later to generate a package-lock.json file, then try again.
+2025-12-06T22:24:24.145798433Z #12 0.474 npm error
+2025-12-06T22:24:24.145803653Z #12 0.474 npm error Clean install a project
+2025-12-06T22:24:24.145807803Z #12 0.474 npm error
+2025-12-06T22:24:24.145813163Z #12 0.474 npm error Usage:
+2025-12-06T22:24:24.145817583Z #12 0.474 npm error npm ci
+2025-12-06T22:24:24.145824263Z #12 0.474 npm error
+2025-12-06T22:24:24.145827153Z #12 0.474 npm error Options:
+2025-12-06T22:24:24.145829993Z #12 0.474 npm error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+2025-12-06T22:24:24.145833473Z #12 0.474 npm error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+2025-12-06T22:24:24.145836403Z #12 0.474 npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+2025-12-06T22:24:24.145839403Z #12 0.474 npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+2025-12-06T22:24:24.145844504Z #12 0.474 npm error [--no-bin-links] [--no-fund] [--dry-run]
+2025-12-06T22:24:24.145847834Z #12 0.474 npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+2025-12-06T22:24:24.145850734Z #12 0.474 npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+2025-12-06T22:24:24.145853534Z #12 0.474 npm error
+2025-12-06T22:24:24.145856364Z #12 0.474 npm error aliases: clean-install, ic, install-clean, isntall-clean
+2025-12-06T22:24:24.145859204Z #12 0.474 npm error
+2025-12-06T22:24:24.145861994Z #12 0.474 npm error Run "npm help ci" for more info
+2025-12-06T22:24:24.145865384Z #12 0.475 npm error A complete log of this run can be found in: /root/.npm/_logs/2025-12-06T22_24_23_714Z-debug-0.log
+2025-12-06T22:24:24.145868204Z #12 ERROR: process "/bin/sh -c npm ci --only=production" did not complete successfully: exit code: 1
+2025-12-06T22:24:24.145870894Z 
+2025-12-06T22:24:24.145873744Z #13 [production 3/9] RUN apk add --no-cache dumb-init
+2025-12-06T22:24:24.145876614Z #13 CANCELED
+2025-12-06T22:24:24.145879444Z ------
+2025-12-06T22:24:24.145883715Z  > [frontend-builder  7/10] RUN npm ci --only=production:
+2025-12-06T22:24:24.145888204Z 0.474 npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+2025-12-06T22:24:24.145903365Z 0.474 npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+2025-12-06T22:24:24.145908285Z 0.474 npm error [--no-bin-links] [--no-fund] [--dry-run]
+2025-12-06T22:24:24.145912515Z 0.474 npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+2025-12-06T22:24:24.145923435Z 0.474 npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+2025-12-06T22:24:24.145925375Z 0.474 npm error
+2025-12-06T22:24:24.145927145Z 0.474 npm error aliases: clean-install, ic, install-clean, isntall-clean
+2025-12-06T22:24:24.145928795Z 0.474 npm error
+2025-12-06T22:24:24.145930496Z 0.474 npm error Run "npm help ci" for more info
+2025-12-06T22:24:24.145932245Z 0.475 npm error A complete log of this run can be found in: /root/.npm/_logs/2025-12-06T22_24_23_714Z-debug-0.log
+2025-12-06T22:24:24.145933925Z ------
+2025-12-06T22:24:24.147076989Z Dockerfile:14
+2025-12-06T22:24:24.147088129Z --------------------
+2025-12-06T22:24:24.14709116Z   12 |     
+2025-12-06T22:24:24.14709415Z   13 |     # Install frontend dependencies
+2025-12-06T22:24:24.14709688Z   14 | >>> RUN npm ci --only=production
+2025-12-06T22:24:24.14709943Z   15 |     
+2025-12-06T22:24:24.14710249Z   16 |     # Copy frontend source
+2025-12-06T22:24:24.14710512Z --------------------
+2025-12-06T22:24:24.14710826Z error: failed to solve: process "/bin/sh -c npm ci --only=production" did not complete successfully: exit code: 1
+2025-12-06T22:24:24.163327659Z error: exit status 1

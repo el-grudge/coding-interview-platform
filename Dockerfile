@@ -11,7 +11,7 @@ COPY index.html ./
 COPY eslint.config.js ./
 
 # Install frontend dependencies
-RUN npm ci --only=production
+RUN npm ci --omit=dev
 
 # Copy frontend source
 COPY src ./src
@@ -33,7 +33,7 @@ COPY server/package*.json ./server/
 
 # Install backend dependencies
 WORKDIR /app/server
-RUN npm ci --only=production
+RUN npm ci --omit=dev
 
 # Copy backend source
 COPY server/src ./src
