@@ -1,0 +1,50 @@
+2025-12-06T22:59:19.774601321Z #20 DONE 11.6s
+2025-12-06T22:59:20.169034713Z 
+2025-12-06T22:59:20.169058444Z #21 [production 8/9] COPY --from=frontend-builder /app/dist /app/server/public
+2025-12-06T22:59:22.448629047Z #21 DONE 2.3s
+2025-12-06T22:59:22.605806856Z 
+2025-12-06T22:59:22.773980305Z #22 [production 9/9] RUN addgroup -g 1001 -S nodejs &&     adduser -S nodejs -u 1001 &&     chown -R nodejs:nodejs /app
+2025-12-06T22:59:51.228470939Z #22 DONE 28.8s
+2025-12-06T22:59:51.396054665Z 
+2025-12-06T22:59:51.396074375Z #23 exporting to docker image format
+2025-12-06T22:59:51.396078645Z #23 exporting layers
+2025-12-06T22:59:52.253433286Z #23 exporting layers 1.0s done
+2025-12-06T22:59:52.450969269Z #23 exporting manifest sha256:91eac449703b6bf33109f66e03e40b6ff3637fb175b3fc70a53d7ef99f04a908 0.0s done
+2025-12-06T22:59:52.45099222Z #23 exporting config sha256:0f84984489fcc2d60169e0bd8c1b392e60cd749cd8236ec064d1e1f8ab5984dd 0.0s done
+2025-12-06T22:59:52.672376352Z #23 DONE 1.4s
+2025-12-06T22:59:52.672395892Z 
+2025-12-06T22:59:52.672401642Z #24 exporting cache to client directory
+2025-12-06T22:59:52.672406062Z #24 preparing build cache for export
+2025-12-06T23:00:21.931206849Z #24 writing cache image manifest sha256:ab0aaaea36af581fd7357f83ed3cedbcf6c0c57bf0d6ec5f4d83d919f2b8ae9e
+2025-12-06T23:00:22.119005269Z #24 writing cache image manifest sha256:ab0aaaea36af581fd7357f83ed3cedbcf6c0c57bf0d6ec5f4d83d919f2b8ae9e 0.0s done
+2025-12-06T23:00:22.119021959Z #24 DONE 29.3s
+2025-12-06T23:00:48.858322032Z Pushing image to registry...
+2025-12-06T23:00:51.421867244Z Upload succeeded
+2025-12-06T23:00:53.106438339Z ==> Deploying...
+2025-12-06T23:01:12.187721971Z     at createApp (file:///app/server/src/app.js:42:7) {
+2025-12-06T23:01:12.187725141Z   originalPath: '/*'
+2025-12-06T23:01:12.187727811Z }
+2025-12-06T23:01:12.187730191Z 
+2025-12-06T23:01:12.187733251Z Node.js v20.19.6
+2025-12-06T23:01:13.902190077Z ==> Exited with status 1
+2025-12-06T23:01:13.917039726Z ==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
+2025-12-06T23:01:15.58353212Z [dotenv@17.2.3] injecting env (0) from .env -- tip: ✅ audit secrets and track compliance: https://dotenvx.com/ops
+2025-12-06T23:01:16.375639372Z /app/server/node_modules/path-to-regexp/dist/index.js:96
+2025-12-06T23:01:16.375665843Z             throw new PathError(`Missing parameter name at index ${index}`, str);
+2025-12-06T23:01:16.375670613Z                   ^
+2025-12-06T23:01:16.375673363Z 
+2025-12-06T23:01:16.375676763Z PathError [TypeError]: Missing parameter name at index 2: /*; visit https://git.new/pathToRegexpError for info
+2025-12-06T23:01:16.375681933Z     at name (/app/server/node_modules/path-to-regexp/dist/index.js:96:19)
+2025-12-06T23:01:16.375684943Z     at parse (/app/server/node_modules/path-to-regexp/dist/index.js:113:68)
+2025-12-06T23:01:16.375687583Z     at pathToRegexp (/app/server/node_modules/path-to-regexp/dist/index.js:267:58)
+2025-12-06T23:01:16.375690203Z     at Object.match (/app/server/node_modules/path-to-regexp/dist/index.js:237:30)
+2025-12-06T23:01:16.375692933Z     at matcher (/app/server/node_modules/router/lib/layer.js:86:23)
+2025-12-06T23:01:16.375695623Z     at new Layer (/app/server/node_modules/router/lib/layer.js:93:62)
+2025-12-06T23:01:16.375698373Z     at Function.route (/app/server/node_modules/router/index.js:428:17)
+2025-12-06T23:01:16.375700954Z     at Function.route (/app/server/node_modules/express/lib/application.js:257:22)
+2025-12-06T23:01:16.375703514Z     at app.<computed> [as get] (/app/server/node_modules/express/lib/application.js:478:22)
+2025-12-06T23:01:16.375706294Z     at createApp (file:///app/server/src/app.js:42:7) {
+2025-12-06T23:01:16.375708803Z   originalPath: '/*'
+2025-12-06T23:01:16.375711414Z }
+2025-12-06T23:01:16.375713744Z 
+2025-12-06T23:01:16.375716204Z Node.js v20.19.6
