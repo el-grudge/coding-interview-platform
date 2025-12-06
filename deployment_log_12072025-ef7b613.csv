@@ -1,0 +1,50 @@
+2025-12-06T22:42:16.696441073Z #24 exporting cache to client directory
+2025-12-06T22:42:16.696446763Z #24 preparing build cache for export
+2025-12-06T22:43:06.353312105Z #24 writing cache image manifest sha256:7968594250e1855d41167374a64bbc2f4ac47062b66849d0905278eb289af39a
+2025-12-06T22:43:06.647782282Z #24 writing cache image manifest sha256:7968594250e1855d41167374a64bbc2f4ac47062b66849d0905278eb289af39a 0.4s done
+2025-12-06T22:43:06.647801373Z #24 DONE 50.1s
+2025-12-06T22:43:32.27126616Z Pushing image to registry...
+2025-12-06T22:43:36.208634828Z Upload succeeded
+2025-12-06T22:44:06.889963666Z ==> Deploying...
+2025-12-06T22:44:14.968179546Z [dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  load multiple .env files with { path: ['.env.local', '.env'] }
+2025-12-06T22:44:15.664953466Z /app/server/node_modules/path-to-regexp/dist/index.js:96
+2025-12-06T22:44:15.664971686Z             throw new PathError(`Missing parameter name at index ${index}`, str);
+2025-12-06T22:44:15.664975806Z                   ^
+2025-12-06T22:44:15.664978246Z 
+2025-12-06T22:44:15.664981256Z PathError [TypeError]: Missing parameter name at index 1: *; visit https://git.new/pathToRegexpError for info
+2025-12-06T22:44:15.664997486Z     at name (/app/server/node_modules/path-to-regexp/dist/index.js:96:19)
+2025-12-06T22:44:15.665000956Z     at parse (/app/server/node_modules/path-to-regexp/dist/index.js:113:68)
+2025-12-06T22:44:15.665003596Z     at pathToRegexp (/app/server/node_modules/path-to-regexp/dist/index.js:267:58)
+2025-12-06T22:44:15.665006487Z     at Object.match (/app/server/node_modules/path-to-regexp/dist/index.js:237:30)
+2025-12-06T22:44:15.665009337Z     at matcher (/app/server/node_modules/router/lib/layer.js:86:23)
+2025-12-06T22:44:15.665011927Z     at new Layer (/app/server/node_modules/router/lib/layer.js:93:62)
+2025-12-06T22:44:15.665014787Z     at Function.route (/app/server/node_modules/router/index.js:428:17)
+2025-12-06T22:44:15.665017687Z     at Function.route (/app/server/node_modules/express/lib/application.js:257:22)
+2025-12-06T22:44:15.665020597Z     at app.<computed> [as get] (/app/server/node_modules/express/lib/application.js:478:22)
+2025-12-06T22:44:15.665023427Z     at createApp (file:///app/server/src/app.js:42:7) {
+2025-12-06T22:44:15.665025977Z   originalPath: '*'
+2025-12-06T22:44:15.665028297Z }
+2025-12-06T22:44:15.665030587Z 
+2025-12-06T22:44:15.665033367Z Node.js v20.19.6
+2025-12-06T22:44:16.7044192Z ==> Exited with status 1
+2025-12-06T22:44:16.722606169Z ==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
+2025-12-06T22:44:18.240184904Z [dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  enable debug logging with { debug: true }
+2025-12-06T22:44:18.942914463Z /app/server/node_modules/path-to-regexp/dist/index.js:96
+2025-12-06T22:44:18.942948744Z             throw new PathError(`Missing parameter name at index ${index}`, str);
+2025-12-06T22:44:18.942954124Z                   ^
+2025-12-06T22:44:18.942957084Z 
+2025-12-06T22:44:18.942961094Z PathError [TypeError]: Missing parameter name at index 1: *; visit https://git.new/pathToRegexpError for info
+2025-12-06T22:44:18.942966154Z     at name (/app/server/node_modules/path-to-regexp/dist/index.js:96:19)
+2025-12-06T22:44:18.942968614Z     at parse (/app/server/node_modules/path-to-regexp/dist/index.js:113:68)
+2025-12-06T22:44:18.942970964Z     at pathToRegexp (/app/server/node_modules/path-to-regexp/dist/index.js:267:58)
+2025-12-06T22:44:18.942974204Z     at Object.match (/app/server/node_modules/path-to-regexp/dist/index.js:237:30)
+2025-12-06T22:44:18.942977174Z     at matcher (/app/server/node_modules/router/lib/layer.js:86:23)
+2025-12-06T22:44:18.942980334Z     at new Layer (/app/server/node_modules/router/lib/layer.js:93:62)
+2025-12-06T22:44:18.942983364Z     at Function.route (/app/server/node_modules/router/index.js:428:17)
+2025-12-06T22:44:18.942986244Z     at Function.route (/app/server/node_modules/express/lib/application.js:257:22)
+2025-12-06T22:44:18.942989464Z     at app.<computed> [as get] (/app/server/node_modules/express/lib/application.js:478:22)
+2025-12-06T22:44:18.942992295Z     at createApp (file:///app/server/src/app.js:42:7) {
+2025-12-06T22:44:18.942995325Z   originalPath: '*'
+2025-12-06T22:44:18.942998515Z }
+2025-12-06T22:44:18.943001065Z 
+2025-12-06T22:44:18.943004135Z Node.js v20.19.6

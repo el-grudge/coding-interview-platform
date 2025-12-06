@@ -39,7 +39,7 @@ export const createApp = () => {
   app.use(express.static(publicPath))
 
   // Serve index.html for all non-API routes (SPA support)
-  app.get('*', (req, res, next) => {
+  app.get('/*', (req, res, next) => {
     // Skip API routes
     if (req.path.startsWith('/api/')) {
       return next()
